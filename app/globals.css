@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer components {
+  .cosmic-text {
+    @apply bg-cosmic-gradient bg-clip-text text-transparent;
+  }
+
+  .cosmic-border {
+    @apply border border-transparent bg-cosmic-gradient bg-origin-border;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: source-out;
+  }
+
+  .cosmic-card {
+    @apply relative overflow-hidden rounded-xl border border-muted/20 bg-black/20 p-6 backdrop-blur-sm;
+  }
+
+  .cosmic-card::before {
+    @apply absolute inset-0 -z-10 bg-cosmic-gradient opacity-10 blur-xl content-[''];
+  }
+
+  .cosmic-button {
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-md bg-cosmic-gradient px-4 py-2 text-sm font-medium text-white transition-all hover:opacity-90;
+  }
+}
+
+@layer utilities {
+  .step {
+    counter-increment: step;
+  }
+
+  .step:before {
+    @apply absolute inline-flex h-8 w-8 items-center justify-center rounded-full bg-muted text-center -indent-px font-mono text-base font-semibold;
+    @apply ml-[-41px] mt-[-4px];
+    content: counter(step);
+  }
+}
+
